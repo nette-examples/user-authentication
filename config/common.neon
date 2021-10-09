@@ -1,22 +1,15 @@
+# Application parameters and settings. See https://doc.nette.org/configuring
+
 parameters:
 
 
 application:
-	errorPresenter: Error
+	# Presenter mapping pattern
 	mapping: App\*Module\Presenters\*Presenter
 
 
 database:
-	dsn: 'sqlite::memory:'
+	# SQLite database source location
+	dsn: 'sqlite:%appDir%/../db/users.sqlite.db'
 	user:
 	password:
-
-
-latte:
-	strictTypes: yes
-
-
-di:
-	export:
-		parameters: no
-		tags: no

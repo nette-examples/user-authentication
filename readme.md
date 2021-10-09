@@ -1,52 +1,47 @@
-Nette Web Project
-=================
+User Authentication (Nette example)
+===================================
 
-Welcome to the Nette Web Project! This is a basic skeleton application built using
-[Nette](https://nette.org), ideal for kick-starting your new web projects.
+Example of user management.
 
-Nette is a renowned PHP web development framework, celebrated for its user-friendliness,
-robust security, and outstanding performance. It's among the safest choices
-for PHP frameworks out there.
-
-If Nette helps you, consider supporting it by [making a donation](https://nette.org/donate).
-Thank you for your generosity!
-
-
-Requirements
-------------
-
-This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
+- User login, registration and logout (`SignPresenter`)
+- Command line registration (`bin/create-user.php`)
+- Authentication using database table (`UserFacade`)
+- Password hashing
+- Presenter requiring authentication (`DashboardPresenter`) using the `RequireLoggedUser` trait
+- Rendering forms using Bootstrap CSS framework
+- Automatic CSRF protection using a token when the user is logged in (`FormFactory`)
+- Separation of form factories into independent classes (`SignInFormFactory`, `SignUpFormFactory`)
+- Return to previous page after login (`SignPresenter::$backlink`)
 
 
 Installation
 ------------
 
-To install the Web Project, Composer is the recommended tool. If you're new to Composer,
-follow [these instructions](https://doc.nette.org/composer). Then, run:
+```shell
+git clone https://github.com/nette-examples/user-authentication
+cd user-authentication
+composer install
+```
 
-	composer create-project nette/web-project path/to/install
-	cd path/to/install
+Make directories `db/`, `temp/` and `log/` writable.
 
-Ensure the `temp/` and `log/` directories are writable.
+By default, SQLite is used as the database which is located in the `db/users.sqlite.db` file. If you would like to switch to a different database, configure access in the `config/local.neon` file:
 
+```neon
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=***'
+	user: ***
+	password: ***
+```
 
-Web Server Setup
-----------------
+And then create the `users` table using SQL statements in the [db/users.mysql.sql](db/users.mysql.sql) file.
 
-To quickly dive in, use PHP's built-in server:
+The simplest way to get started is to start the built-in PHP server in the root directory of your project:
 
-	php -S localhost:8000 -t www
+```shell
+php -S localhost:8000 www/index.php
+```
 
-Then, open `http://localhost:8000` in your browser to view the welcome page.
+Then visit `http://localhost:8000` in your browser to see the welcome page.
 
-For Apache or Nginx users, configure a virtual host pointing to your project's `www/` directory.
-
-**Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
-Refer to [security warning](https://nette.org/security-warning) for more details.
-
-
-Minimal Skeleton
-----------------
-
-For demonstrating issues or similar tasks, rather than starting a new project, use
-this [minimal skeleton](https://github.com/nette/web-project/tree/minimal).
+It requires PHP version 8.1 or newer.
