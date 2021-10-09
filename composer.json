@@ -1,29 +1,30 @@
 {
-	"name": "nette/web-project",
-	"description": "Nette: Standard Web Project",
-	"keywords": ["nette"],
+	"name": "nette-examples/user-authentication",
 	"type": "project",
-	"license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "David Grudl",
+			"homepage": "https://davidgrudl.com"
+		},
+		{
+			"name": "Nette Community",
+			"homepage": "https://nette.org/contributors"
+		}
+	],
 	"require": {
-		"php": ">= 7.2",
+		"php": ">=7.4",
 		"nette/application": "^3.1",
 		"nette/bootstrap": "^3.1",
-		"nette/caching": "^3.1",
 		"nette/database": "^3.1",
 		"nette/di": "^3.0",
-		"nette/finder": "^2.5",
 		"nette/forms": "^3.1",
 		"nette/http": "^3.1",
-		"nette/mail": "^3.1",
 		"nette/robot-loader": "^3.3",
 		"nette/security": "^3.1",
 		"nette/utils": "^3.2",
-		"latte/latte": "^2.9",
+		"latte/latte": "^2.10",
 		"tracy/tracy": "^2.8"
-	},
-	"require-dev": {
-		"nette/tester": "^2.3",
-		"symfony/thanks": "^1"
 	},
 	"autoload": {
 		"psr-4": {
