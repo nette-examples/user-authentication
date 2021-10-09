@@ -1,0 +1,22 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping: App\*Module\Presenters\*Presenter
+
+
+database:
+	dsn: 'sqlite::memory:'
+	user:
+	password:
+
+
+latte:
+	strictTypes: yes
+
+
+di:
+	export:
+		parameters: no
+		tags: no
