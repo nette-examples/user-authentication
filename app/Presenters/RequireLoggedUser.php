@@ -11,7 +11,7 @@ trait RequireLoggedUser
 	{
 		$this->onStartup[] = function () {
 			if (!$this->getUser()->isLoggedIn()) {
-				$this->redirect('Sign:in', $this->storeRequest());
+				$this->redirect('Sign:in', ['backlink' => $this->storeRequest()]);
 			}
 		};
 	}
