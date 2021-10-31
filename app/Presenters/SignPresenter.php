@@ -33,7 +33,7 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 	{
 		return $this->signInFactory->create(function (): void {
 			$this->restoreRequest($this->backlink);
-			$this->redirect('Homepage:');
+			$this->redirect('Dashboard:');
 		});
 	}
 
@@ -44,7 +44,7 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 	protected function createComponentSignUpForm(): Form
 	{
 		return $this->signUpFactory->create(function (): void {
-			$this->redirect('Homepage:');
+			$this->redirect('Dashboard:');
 		});
 	}
 
