@@ -8,7 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $container = App\Bootstrap::boot()
 	->createContainer();
 
-if (!isset($_SERVER['argv'][3])) {
+if (!isset($argv[3])) {
 	echo '
 Add new user to database.
 
@@ -17,7 +17,7 @@ Usage: create-user.php <name> <email> <password>
 	exit(1);
 }
 
-[, $name, $email, $password] = $_SERVER['argv'];
+[, $name, $email, $password] = $argv;
 
 $manager = $container->getByType(App\Model\UserFacade::class);
 
