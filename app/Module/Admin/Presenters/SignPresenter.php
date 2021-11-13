@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Presenters;
+namespace App\Module\Admin\Presenters;
 
 use App\Forms;
 use Nette;

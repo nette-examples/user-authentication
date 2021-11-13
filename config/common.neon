@@ -2,9 +2,9 @@ parameters:
 
 
 application:
-	errorPresenter: Error
+	errorPresenter: Auxiliary:Error
 	mapping:
-		*: App\*Module\Presenters\*Presenter
+		*: App\Module\*\Presenters\*Presenter
 
 
 session:
