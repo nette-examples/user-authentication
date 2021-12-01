@@ -20,7 +20,7 @@ Installation
 ```shell
 git clone https://github.com/nette-examples/user-authentication
 cd user-authentication
-composer update
+composer install
 ```
 
 Set the database access data in the `config/local.neon` file:
@@ -37,7 +37,7 @@ And create a users table in the database by importing the `users.mysql.sql` file
 The simplest way to get started is to start the built-in PHP server in the root directory of your project:
 
 ```shell
-php -S localhost:8000 -t www
+php -S localhost:8000 www/index.php
 ```
 
 Then visit `http://localhost:8000` in your browser to see the welcome page.
