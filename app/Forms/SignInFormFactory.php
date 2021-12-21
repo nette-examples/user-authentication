@@ -38,10 +38,10 @@ final class SignInFormFactory
 
 		$form->addSubmit('send', 'Sign in');
 
-		$form->onSuccess[] = function (Form $form, \stdClass $values) use ($onSuccess): void {
+		$form->onSuccess[] = function (Form $form, \stdClass $data) use ($onSuccess): void {
 			try {
-				$this->user->setExpiration($values->remember ? '14 days' : '20 minutes');
-				$this->user->login($values->username, $values->password);
+				$this->user->setExpiration($data->remember ? '14 days' : '20 minutes');
+				$this->user->login($data->username, $data->password);
 			} catch (Nette\Security\AuthenticationException $e) {
 				$form->addError('The username or password you entered is incorrect.');
 				return;
