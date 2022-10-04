@@ -35,9 +35,9 @@ final class SignUpFormFactory
 			->setRequired('Please enter your e-mail.');
 
 		$form->addPassword('password', 'Create a password:')
-			->setOption('description', sprintf('at least %d characters', $this->userFacade::PasswordMinLength))
+			->setOption('description', sprintf('at least %d characters', $this->userFacade::PASSWORD_MIN_LENGTH))
 			->setRequired('Please create a password.')
-			->addRule($form::MIN_LENGTH, null, $this->userFacade::PasswordMinLength);
+			->addRule($form::MIN_LENGTH, null, $this->userFacade::PASSWORD_MIN_LENGTH);
 
 		$form->addSubmit('send', 'Sign up');
 
