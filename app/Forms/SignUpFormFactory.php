@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace App\Forms;
 
 use App\Model;
-use Nette;
 use Nette\Application\UI\Form;
 
 
 final class SignUpFormFactory
 {
-	use Nette\SmartObject;
-
 	private FormFactory $factory;
 
 	private Model\UserFacade $userFacade;

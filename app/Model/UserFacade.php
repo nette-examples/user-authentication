@@ -13,8 +13,6 @@ use Nette\Security\Passwords;
  */
 final class UserFacade implements Nette\Security\Authenticator
 {
-	use Nette\SmartObject;
-
 	public const PasswordMinLength = 7;
 
 	private const

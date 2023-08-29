@@ -10,8 +10,6 @@ use Nette\Application\UI\Form;
 
 final class FormFactory
 {
-	use Nette\SmartObject;
-
 	private Nette\Security\User $user;
 
 
