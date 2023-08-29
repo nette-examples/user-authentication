@@ -12,12 +12,9 @@ use Tracy\ILogger;
 
 final class ErrorPresenter implements Nette\Application\IPresenter
 {
-	private ILogger $logger;
-
-
-	public function __construct(ILogger $logger)
-	{
-		$this->logger = $logger;
+	public function __construct(
+		private ILogger $logger,
+	) {
 	}
 
 

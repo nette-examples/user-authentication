@@ -10,12 +10,9 @@ use Nette\Application\UI\Form;
 
 final class FormFactory
 {
-	private Nette\Security\User $user;
-
-
-	public function __construct(Nette\Security\User $user)
-	{
-		$this->user = $user;
+	public function __construct(
+		private Nette\Security\User $user,
+	) {
 	}
 
 

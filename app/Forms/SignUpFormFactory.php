@@ -10,15 +10,10 @@ use Nette\Application\UI\Form;
 
 final class SignUpFormFactory
 {
-	private FormFactory $factory;
-
-	private Model\UserFacade $userFacade;
-
-
-	public function __construct(FormFactory $factory, Model\UserFacade $userFacade)
-	{
-		$this->factory = $factory;
-		$this->userFacade = $userFacade;
+	public function __construct(
+		private FormFactory $factory,
+		private Model\UserFacade $userFacade,
+	) {
 	}
 
 

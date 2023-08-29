@@ -6,23 +6,20 @@ namespace App\Module\Admin\Presenters;
 
 use App\Forms;
 use Nette;
+use Nette\Application\Attributes\Persistent;
 use Nette\Application\UI\Form;
 
 
 final class SignPresenter extends Nette\Application\UI\Presenter
 {
-	/** @persistent */
+	#[Persistent]
 	public string $backlink = '';
 
-	private Forms\SignInFormFactory $signInFactory;
 
-	private Forms\SignUpFormFactory $signUpFactory;
-
-
-	public function __construct(Forms\SignInFormFactory $signInFactory, Forms\SignUpFormFactory $signUpFactory)
-	{
-		$this->signInFactory = $signInFactory;
-		$this->signUpFactory = $signUpFactory;
+	public function __construct(
+		private Forms\SignInFormFactory $signInFactory,
+		private Forms\SignUpFormFactory $signUpFactory,
+	) {
 	}
 
 

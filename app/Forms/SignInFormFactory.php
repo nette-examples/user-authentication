@@ -11,15 +11,10 @@ use Nette\Security\User;
 
 final class SignInFormFactory
 {
-	private FormFactory $factory;
-
-	private User $user;
-
-
-	public function __construct(FormFactory $factory, User $user)
-	{
-		$this->factory = $factory;
-		$this->user = $user;
+	public function __construct(
+		private FormFactory $factory,
+		private User $user,
+	) {
 	}
 
 

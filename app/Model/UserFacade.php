@@ -24,15 +24,10 @@ final class UserFacade implements Nette\Security\Authenticator
 		ColumnRole = 'role';
 
 
-	private Nette\Database\Explorer $database;
-
-	private Passwords $passwords;
-
-
-	public function __construct(Nette\Database\Explorer $database, Passwords $passwords)
-	{
-		$this->database = $database;
-		$this->passwords = $passwords;
+	public function __construct(
+		private Nette\Database\Explorer $database,
+		private Passwords $passwords,
+	) {
 	}
 
 
