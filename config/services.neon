@@ -1,6 +1,9 @@
 services:
-	- App\Model\UserFacade
-	- App\Forms\FormFactory
-	- App\Forms\SignInFormFactory
-	- App\Forms\SignUpFormFactory
 	- App\Router\RouterFactory::createRouter
+
+
+search:
+	-	in: %appDir%
+		classes:
+			- *Factory
+			- *Facade
