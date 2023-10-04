@@ -2,6 +2,6 @@ parameters:
 
 
 database:
-	dsn: 'sqlite:%appDir%/../users.sqlite.db'
+	dsn: 'sqlite:%appDir%/../db/users.sqlite.db'
 	user:
 	password:
