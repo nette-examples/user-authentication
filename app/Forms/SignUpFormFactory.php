@@ -8,8 +8,12 @@ use App\Model;
 use Nette\Application\UI\Form;
 
 
+/**
+ * Factory for creating user sign-up forms with registration logic.
+ */
 final class SignUpFormFactory
 {
+	// Dependency injection of form factory and user management facade
 	public function __construct(
 		private FormFactory $factory,
 		private Model\UserFacade $userFacade,
@@ -17,6 +21,10 @@ final class SignUpFormFactory
 	}
 
 
+	/**
+	 * Create a sign-up form with fields for username, email, and password.
+	 * Contains logic to handle successful form submissions.
+	 */
 	public function create(callable $onSuccess): Form
 	{
 		$form = $this->factory->create();
@@ -33,10 +41,13 @@ final class SignUpFormFactory
 
 		$form->addSubmit('send', 'Sign up');
 
+		// Handle form submission
 		$form->onSuccess[] = function (Form $form, \stdClass $data) use ($onSuccess): void {
 			try {
+				// Attempt to register a new user
 				$this->userFacade->add($data->username, $data->email, $data->password);
 			} catch (Model\DuplicateNameException $e) {
+				// Handle the case where the username is already taken
 				$form['username']->addError('Username is already taken.');
 				return;
 			}

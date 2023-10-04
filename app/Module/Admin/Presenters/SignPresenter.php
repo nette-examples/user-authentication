@@ -10,8 +10,14 @@ use Nette\Application\Attributes\Persistent;
 use Nette\Application\UI\Form;
 
 
+/**
+ * Presenter for sign-in and sign-up actions.
+ */
 final class SignPresenter extends Nette\Application\UI\Presenter
 {
+	/**
+	 * Stores the previous page hash to redirect back after successful login.
+	 */
 	#[Persistent]
 	public string $backlink = '';
 
@@ -24,19 +30,21 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 
 
 	/**
-	 * Sign-in form factory.
+	 * Creates the sign-in form component.
+	 * On successful submission, the user is redirected to the dashboard or back to the previous page.
 	 */
 	protected function createComponentSignInForm(): Form
 	{
 		return $this->signInFactory->create(function (): void {
-			$this->restoreRequest($this->backlink);
-			$this->redirect('Dashboard:');
+			$this->restoreRequest($this->backlink); // redirects the user to the previous page if any
+			$this->redirect('Dashboard:'); // or redirects the user to the dashboard
 		});
 	}
 
 
 	/**
-	 * Sign-up form factory.
+	 * Creates the sign-up form component.
+	 * On successful submission, the user is redirected to the dashboard.
 	 */
 	protected function createComponentSignUpForm(): Form
 	{
@@ -46,6 +54,9 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 	}
 
 
+	/**
+	 * Logs out the currently authenticated user.
+	 */
 	public function actionOut(): void
 	{
 		$this->getUser()->logout();

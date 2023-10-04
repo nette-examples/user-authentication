@@ -12,9 +12,13 @@ final class RouterFactory
 {
 	use Nette\StaticClass;
 
+	/**
+	 * Creates the main application router with defined routes.
+	 */
 	public static function createRouter(): RouteList
 	{
 		$router = new RouteList;
+		// Default route that maps to the Admin Dashboard
 		$router->addRoute('<presenter>/<action>', 'Admin:Dashboard:default');
 		return $router;
 	}

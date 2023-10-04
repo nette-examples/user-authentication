@@ -1,28 +1,36 @@
+{* Generic form template for Bootstrap layout *}
 <form n:name=$name class=form-horizontal>
-<ul class=error n:ifcontent>
-	<li n:foreach="$form->ownErrors as $error">{$error}</li>
-</ul>
 
-<div n:foreach="$form->controls as $name => $input"
-	n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
-	n:class="form-group, $input->required ? required, $input->error ? has-error">
+	{* List for form-level error messages *}
+	<ul class=error n:ifcontent>
+		<li n:foreach="$form->ownErrors as $error">{$error}</li>
+	</ul>
 
-	<div class="col-sm-2 control-label">{label $input /}</div>
+	{* Loop over form controls and render each one *}
+	<div n:foreach="$form->controls as $name => $input"
+		n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
+		n:class="form-group, $input->required ? required, $input->error ? has-error">
 
-	<div class="col-sm-10">
-		{if $input->getOption(type) in [text, select, textarea]}
-			{input $input class => form-control}
-		{elseif $input->getOption(type) === button}
-			{input $input class => "btn btn-default"}
-		{elseif $input->getOption(type) === checkbox}
-			<div class="checkbox">{input $input}</div>
-		{elseif $input->getOption(type) === radio}
-			<div class="radio">{input $input}</div>
-		{else}
-			{input $input}
-		{/if}
+		{* Label for the input *}
+		<div class="col-sm-2 control-label">{label $input /}</div>
 
-		<span class=help-block n:ifcontent>{$input->error ?: $input->getOption(description)}</span>
+		<div class="col-sm-10">
+			{* Conditionally render inputs based on their type with appropriate Bootstrap classes *}
+			{if $input->getOption(type) in [text, select, textarea]}
+				{input $input class => form-control}
+			{elseif $input->getOption(type) === button}
+				{input $input class => "btn btn-default"}
+			{elseif $input->getOption(type) === checkbox}
+				<div class="checkbox">{input $input}</div>
+			{elseif $input->getOption(type) === radio}
+				<div class="radio">{input $input}</div>
+			{else}
+				{input $input}
+			{/if}
+
+			{* Display input-level errors or descriptions, if present *}
+			<span class=help-block n:ifcontent>{$input->error ?: $input->getOption(description)}</span>
+		</div>
 	</div>
-</div>
+
 </form>

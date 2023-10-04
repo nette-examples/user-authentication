@@ -1,7 +1,5 @@
-parameters:
-
-
 database:
+	# SQLite database source location
 	dsn: 'sqlite:%appDir%/../db/users.sqlite.db'
 	user:
 	password:

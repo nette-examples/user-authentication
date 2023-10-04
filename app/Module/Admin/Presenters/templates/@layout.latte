@@ -4,18 +4,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
+	{* Page title with optional prefix from the child template *}
 	<title>{ifset title}{include title|stripHtml} | {/ifset}User Login Example</title>
 
+	{* Link to the Bootstrap stylesheet for styling *}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
 <body>
 	<div class=container>
+		{* Flash messages display block *}
 		<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
 
+		{* Main content of the child template goes here *}
 		{include content}
 	</div>
 
+	{* Optional scripts block; by default includes Nette Forms script for validation *}
 	{block scripts}
 	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
 	{/block}
