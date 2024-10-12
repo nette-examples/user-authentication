@@ -40,9 +40,12 @@
 
 {define local control, Nette\Forms\Controls\BaseControl $control}
 	{* Conditionally render controls based on their type with appropriate Bootstrap classes *}
-	{if $control->getOption(type) in [text, select, textarea, datetime, file]}
+	{if $control->getOption(type) in [text, textarea, datetime, file]}
 		{input $control class => form-control}
 
+	{elseif $control->getOption(type) === select}
+		{input $control class => form-select}
+		
 	{elseif $control->getOption(type) === button}
 		{input $control class => "btn btn-primary"}
 
