@@ -8,10 +8,10 @@ if (@!include __DIR__ . '/../vendor/autoload.php') {
 }
 
 // Initialize the application environment
-$configurator = App\Bootstrap::boot();
+$bootstrap = new App\Bootstrap;
 
 // Create the Dependency Injection container
-$container = $configurator->createContainer();
+$container = $bootstrap->bootWebApplication();
 
 // Start the application and handle the incoming request
 $application = $container->getByType(Nette\Application\Application::class);
