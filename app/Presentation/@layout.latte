@@ -4,14 +4,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+	{* Page title with optional prefix from the child template *}
+	<title>{ifset title}{include title|stripHtml} | {/ifset}User Login Example</title>
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	{* Flash messages display block *}
+	<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
 
+	{* Main content of the child template goes here *}
 	{include content}
 
+	{* Scripts block; by default includes Nette Forms script for validation *}
 	{block scripts}
 	<script src="https://unpkg.com/nette-forms@3"></script>
 	{/block}
