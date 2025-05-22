@@ -43,7 +43,8 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 			->setRequired('Please enter your username.');
 
 		$form->addPassword('password', 'Password:')
-			->setRequired('Please enter your password.');
+			->setRequired('Please enter your password.')
+			->setHtmlAttribute('autocomplete', 'current-password');
 
 		$form->addSubmit('send', 'Sign in');
 
@@ -79,7 +80,8 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 		$form->addPassword('password', 'Create a password:')
 			->setOption('description', sprintf('at least %d characters', $this->userFacade::PasswordMinLength))
 			->setRequired('Please create a password.')
-			->addRule($form::MinLength, null, $this->userFacade::PasswordMinLength);
+			->addRule($form::MinLength, null, $this->userFacade::PasswordMinLength)
+			->setHtmlAttribute('autocomplete', 'new-password');
 
 		$form->addSubmit('send', 'Sign up');
 
